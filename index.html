@@ -12,7 +12,7 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-		<title>Reactions</title>
+	<title>Reactions</title>
 </head>
 
 <body>
@@ -35,46 +35,46 @@
 
 
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- <script type="text/javascript">
+		 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		 <script type="text/javascript">
 
 
- 	var topics = ["happy", "sad", "confused", "scared", "excited", "angry", "disappointed", "eyebrows raise", "sleepy"];
+		 	var topics = ["happy", "sad", "confused", "scared", "excited", "angry", "disappointed", "eyebrows raise", "sleepy"];
 
- 	//FUNCTIONS
-         //=======================================================
-         function renderButtons() {
-             $("#buttons-view").empty();
-             for (var i = 0; i < topics.length; i++) {
+		 	//FUNCTIONS
+		         //=======================================================
+		         function renderButtons() {
+		             $("#buttons-view").empty();
+		             for (var i = 0; i < topics.length; i++) {
 
-                 var button = $("<button>");
-                 button.addClass("reaction");
-                 button.attr("data-name", topics[i]);
-                 button.text(topics[i]);
-                 $("#buttons-view").append(button);
-             }
-         }
+		                 var button = $("<button>");
+		                 button.addClass("reaction");
+		                 button.attr("data-name", topics[i]);
+		                 button.text(topics[i]);
+		                 $("#buttons-view").append(button);
+		             }
+		         }
 
-         $("#add-reaction").on("click", function(event) {
-             event.preventDefault();
+		         $("#reactionsForm").on("click", function(event) {
+		             event.preventDefault();
 
-             var reaction = $("#reaction-input").val().trim();
+		             var reaction = $("#reaction-input").val().trim();
 
-             topics.push(reaction);
+		             topics.push(reaction);
 
-             renderButtons();
-         });
+		             renderButtons();
+		         });
 
-         renderButtons();
-	
+		         renderButtons();
+			
 
- 	
+		 	
 
 
 
-	
-	</script>
-</div>
+			
+		</script>
+	</div>
 	
 </body>
 </html>
