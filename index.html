@@ -67,7 +67,9 @@
 		         });
 
 		         // displays reaction for all elements with class of "reaction" when clicked
-		         $(document).on("click", ".reaction", displayReaction());
+		         //$(document).on("click", ".reaction", displayReaction());
+
+		         $(".reaction").on("click", displayReaction());
 
 		         // displays the starting buttons 
 		         renderButtons();
