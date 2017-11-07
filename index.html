@@ -2,96 +2,23 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-
-
-	<title>Reactions</title>
+	<title>Giphy Reactions</title>
+	<link rel="stylesheet" type="text/css" href="assets/styles.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
-
 <body>
 
-	<div class="jumbotron" id="header">
-		<h1>Reactions Search</h1>
-	</div>
+<div id="buttonsArea"></div>
 
-	<div id="buttons-view"></div>
+<form id="searchForm">
+	<label for="searchInput">Add a new reaction!</label>
+	<input type="text" id="searchInput"><br>
+	<input id="addSearch" type="submit" value="Submit">
+</form>
 
-		<form id="reactionsForm">
-			<label for="reactionsInput">Add a reaction!</label>
-			<input type="text" id="reaction-input"><br>
+<div id="searches"></div>
 
-			<input id="findReactions" type="submit" value="Reaction Search">
-		</form>
+<script type="text/javascript" src="assets/javascript/app.js"></script>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    	<script type="text/javascript">
-    	//starting array for reaction topics
-		 	var topics = ["happy", "sad", "confused", "scared", "excited", "angry", "disappointed", "eyebrows raise", "sleepy"];
-		 	var reactions = "";
-		 	//FUNCTIONS not fully functioning.. not grabbing gifs... thinking there might be an issue with the queryURL? 
-		         //=======================================================
-		         function displayReaction() {
-		         	var topic = $(this).attr("data-name");
-		         	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + reactions + "&api_key=aZ0xckPnsX5SLz2rdEaUeZQ10TNmSR5F&limit=10&offset=0&rating=PG&lang=en";
-
-		         	// creation of ajax call for reaction buttons 
-		         	$.ajax({
-		         		url: queryURL,
-		         		method: "GET"
-		         	}).done(function(response) {
-		         		var reactionDiv = $("<div class='reaction'>");
-		         		var rating = response.Rated;
-		         		var p = $("<p>").text("Rating: " + rating);
-
-		         		reactionDiv.append(p);
-
-		         		$("buttons-view").prepend(reactionDiv);
-		         	});
-		         }
-		         // function that renders the buttons using a for loop
-		         function renderButtons() {
-		             $("#buttons-view").empty();
-		             for (var i = 0; i < topics.length; i++) {
-		                 var button = $("<button>");
-		                 button.addClass("reaction");
-		                 button.attr("data-name", topics[i]);
-		                 button.text(topics[i]);
-		                 $("#buttons-view").append(button);
-		             }
-		          // creates a new button from the user input    
-		         }
-		         $("#reactionsForm").on("click", function(event) {
-		             event.preventDefault();
-		             reactions = $("#reaction-input").val().trim();
-		             topics.push(reactions);
-		             renderButtons();
-		         });
-
-		         // displays reaction for all elements with class of "reaction" when clicked
-		         //$(document).on("click", ".reaction", displayReaction());
-
-		         $(".reaction").on("click", displayReaction());
-
-		         // displays the starting buttons 
-		         renderButtons();
-
-		         // function for pausing gifs
-		         /*  
-		         	$(".reaction").on("click", function (){
-					    var state = $(this).attr("data-state");
-
-						if (state === "still"){
-						$(this).attr("src", $(this).attr("date-animate"));
-						$(this).attr("data-state", "animate");
-						} else {
-							$(this).attr("src", (this).attr("date-still"));
-							$(this).attr("date-state", "still");
-						}
-
-		         	});
-		         */
-				
-		</script>
-	</div>
 </body>
-
 </html>
